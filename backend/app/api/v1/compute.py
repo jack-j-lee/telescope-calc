@@ -1,13 +1,7 @@
 from fastapi import APIRouter
 
 from app.models.airy import AiryDiskRequest, AiryDiskResponse
-from app.models.fov import FOVRequest, FOVResponse
-from app.core.optics import (
-    airy_disk_diameter_m,
-    field_of_view_rad,
-    field_of_view_deg,
-    angular_resolution_arcsec_per_pixel,
-)
+from app.core.optics import airy_disk_diameter_m
 
 router = APIRouter(prefix="/compute", tags=["compute"])
 
