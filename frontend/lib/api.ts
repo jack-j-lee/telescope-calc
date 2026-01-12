@@ -29,6 +29,16 @@ export type FOVResponse = {
   formula: string;
 };
 
+export type MagnificationRequest = {
+  telescope_focal_length_mm: number;
+  eyepiece_focal_length_mm: number;
+};
+
+export type MagnificationResponse = {
+  magnification: number;
+  formula: string;
+};
+
 export async function computeAiryDisk(req: AiryDiskRequest): Promise<AiryDiskResponse> {
   const res = await fetch(`${API_BASE}/v1/compute/airy-disk`, {
     method: "POST",
@@ -46,6 +56,21 @@ export async function computeAiryDisk(req: AiryDiskRequest): Promise<AiryDiskRes
 
 export async function computeFOV(req: FOVRequest): Promise<FOVResponse> {
   const res = await fetch(`${API_BASE}/v1/compute/fov`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`API error ${res.status}: ${text}`);
+  }
+
+  return res.json();
+}
+
+export async function computeMagnification(req: MagnificationRequest): Promise<MagnificationResponse> {
+  const res = await fetch(`${API_BASE}/v1/compute/magnification`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),

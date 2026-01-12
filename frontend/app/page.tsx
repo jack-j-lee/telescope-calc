@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { computeAiryDisk, computeFOV } from "../lib/api";
+import { computeAiryDisk, computeFOV, computeMagnification } from "../lib/api";
 
 export default function Page() {
   // Airy Disk states
@@ -20,6 +20,13 @@ export default function Page() {
   const [fovResult, setFovResult] = useState<any | null>(null);
   const [fovError, setFovError] = useState<string>("");
   const [fovFormula, setFovFormula] = useState<string>("");
+
+  // Magnification states
+  const [telescopeFocalLengthMm, setTelescopeFocalLengthMm] = useState("2000");
+  const [eyepieceFocalLengthMm, setEyepieceFocalLengthMm] = useState("25");
+  const [magnificationResult, setMagnificationResult] = useState<number | null>(null);
+  const [magnificationError, setMagnificationError] = useState<string>("");
+  const [magnificationFormula, setMagnificationFormula] = useState<string>("");
 
   async function onCompute() {
     setError("");
@@ -69,6 +76,28 @@ export default function Page() {
       setFovFormula(out.formula);
     } catch (e: any) {
       setFovError(e?.message ?? "Unknown error");
+    }
+  }
+
+  async function onComputeMagnification() {
+    setMagnificationError("");
+    setMagnificationResult(null);
+
+    const tfl = Number(telescopeFocalLengthMm);
+    const efl = Number(eyepieceFocalLengthMm);
+
+    if (!Number.isFinite(tfl) || tfl <= 0) return setMagnificationError("Telescope focal length must be a positive number.");
+    if (!Number.isFinite(efl) || efl <= 0) return setMagnificationError("Eyepiece focal length must be a positive number.");
+
+    try {
+      const out = await computeMagnification({
+        telescope_focal_length_mm: tfl,
+        eyepiece_focal_length_mm: efl,
+      });
+      setMagnificationResult(out.magnification);
+      setMagnificationFormula(out.formula);
+    } catch (e: any) {
+      setMagnificationError(e?.message ?? "Unknown error");
     }
   }
 
@@ -517,6 +546,150 @@ export default function Page() {
                 border: "1px solid rgba(255, 255, 255, 0.05)"
               }}>
                 {fovFormula}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Magnification Calculator Card */}
+        <div style={cardStyle}>
+          <h2 style={{
+            marginTop: 0,
+            marginBottom: "1rem",
+            fontSize: "1.5rem",
+            fontWeight: 600,
+            color: "#8a2be2",
+            textShadow: "0 0 10px rgba(138, 43, 226, 0.5)"
+          }}>
+            Magnification Calculator
+          </h2>
+          <p style={{
+            color: "#b0b0b0",
+            fontSize: "0.9rem",
+            marginBottom: "1rem"
+          }}>
+            Calculate telescope magnification from focal lengths.
+          </p>
+
+          <label style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            color: "#d0d0d0",
+            fontSize: "0.95rem",
+            fontWeight: 500
+          }}>
+            Telescope Focal Length (mm)
+            <input
+              value={telescopeFocalLengthMm}
+              onChange={(e) => setTelescopeFocalLengthMm(e.target.value)}
+              style={inputStyle}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+              placeholder="Enter telescope focal length"
+            />
+          </label>
+
+          <label style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            color: "#d0d0d0",
+            fontSize: "0.95rem",
+            fontWeight: 500
+          }}>
+            Eyepiece Focal Length (mm)
+            <input
+              value={eyepieceFocalLengthMm}
+              onChange={(e) => setEyepieceFocalLengthMm(e.target.value)}
+              style={inputStyle}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+              placeholder="Enter eyepiece focal length"
+            />
+          </label>
+
+          <button
+            onClick={onComputeMagnification}
+            style={{ 
+              padding: "14px 24px", 
+              cursor: "pointer",
+              backgroundColor: "rgba(138, 43, 226, 0.2)",
+              border: "2px solid #8a2be2",
+              borderRadius: "10px",
+              color: "#8a2be2",
+              fontSize: "1.1rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              transition: "all 0.3s ease",
+              boxShadow: "0 0 20px rgba(138, 43, 226, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2)",
+              textShadow: "0 0 10px rgba(138, 43, 226, 0.5)"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(138, 43, 226, 0.3)";
+              e.currentTarget.style.boxShadow = "0 0 30px rgba(138, 43, 226, 0.5), 0 6px 20px rgba(0, 0, 0, 0.3)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(138, 43, 226, 0.2)";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(138, 43, 226, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            Compute Magnification
+          </button>
+
+          {magnificationError && (
+            <div style={{ 
+              color: "#ff6b6b", 
+              padding: "12px 16px",
+              backgroundColor: "rgba(255, 107, 107, 0.1)",
+              border: "1px solid rgba(255, 107, 107, 0.3)",
+              borderRadius: "8px",
+              boxShadow: "0 0 15px rgba(255, 107, 107, 0.2)"
+            }}>
+              {magnificationError}
+            </div>
+          )}
+
+          {magnificationResult !== null && (
+            <div style={{ 
+              padding: "20px", 
+              border: "1px solid rgba(138, 43, 226, 0.4)", 
+              borderRadius: "12px",
+              backgroundColor: "rgba(138, 43, 226, 0.1)",
+              boxShadow: "0 0 25px rgba(138, 43, 226, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset",
+              backdropFilter: "blur(5px)"
+            }}>
+              <div style={{
+                fontSize: "1.2rem",
+                marginBottom: "10px",
+                color: "#fff",
+                fontWeight: 600
+              }}>
+                <span style={{
+                  color: "#8a2be2",
+                  textShadow: "0 0 10px rgba(138, 43, 226, 0.5)"
+                }}>Magnification:</span>{" "}
+                <span style={{
+                  color: "#00d4ff",
+                  textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
+                }}>
+                  {magnificationResult.toFixed(2)}×
+                </span>
+              </div>
+              <div style={{ 
+                marginTop: 12, 
+                color: "#b0b0b0",
+                fontSize: "0.9rem",
+                fontFamily: "monospace",
+                padding: "10px",
+                backgroundColor: "rgba(0, 0, 0, 0.2)",
+                borderRadius: "6px",
+                border: "1px solid rgba(255, 255, 255, 0.05)"
+              }}>
+                {magnificationFormula}
               </div>
             </div>
           )}

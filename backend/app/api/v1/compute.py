@@ -1,7 +1,15 @@
 from fastapi import APIRouter
 
 from app.models.airy import AiryDiskRequest, AiryDiskResponse
-from app.core.optics import airy_disk_diameter_m
+from app.models.fov import FOVRequest, FOVResponse
+from app.models.magnification import MagnificationRequest, MagnificationResponse
+from app.core.optics import (
+    airy_disk_diameter_m,
+    field_of_view_rad,
+    field_of_view_deg,
+    angular_resolution_arcsec_per_pixel,
+    magnification,
+)
 
 router = APIRouter(prefix="/compute", tags=["compute"])
 
@@ -32,4 +40,12 @@ def compute_fov(req: FOVRequest) -> FOVResponse:
         angular_resolution_width_arcsec_per_pixel=angular_res_width,
         angular_resolution_height_arcsec_per_pixel=angular_res_height,
         formula=f"FOV = 2 × arctan(sensor_size / (2 × focal_length))",
+    )
+
+@router.post("/magnification", response_model=MagnificationResponse)
+def compute_magnification(req: MagnificationRequest) -> MagnificationResponse:
+    mag = magnification(req.telescope_focal_length_mm, req.eyepiece_focal_length_mm)
+    return MagnificationResponse(
+        magnification=mag,
+        formula=f"Magnification = Telescope Focal Length / Eyepiece Focal Length",
     )
