@@ -21,3 +21,8 @@ def angular_resolution_arcsec_per_pixel(fov_deg: float, pixels: int) -> float:
     # Angular resolution: FOV divided by number of pixels, converted to arcseconds
     # 1 degree = 3600 arcseconds
     return (fov_deg / pixels) * 3600
+
+
+def magnification(telescope_focal_length_mm: float, eyepiece_focal_length_mm: float) -> float:
+    # Magnification = Telescope Focal Length / Eyepiece Focal Length
+    return telescope_focal_length_mm / eyepiece_focal_length_mm
