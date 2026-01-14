@@ -1,5 +1,6 @@
 import "./globals.css";
 import SpaceBackground from "./components/SpaceBackground";
+import Navbar from "./components/Navbar";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           overflowX: "hidden"
         }}>
           <SpaceBackground />
+          <Navbar />
           
           <div style={{ 
             maxWidth: 1200, 
