@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function Home() {
+export default function CalculatorsHub() {
   return (
     <main style={{
       color: "#e0e0e0",
@@ -21,92 +21,21 @@ export default function Home() {
         textShadow: "0 0 30px rgba(0, 212, 255, 0.3)",
         letterSpacing: "-0.02em"
       }}>
-        A.S.T.R.A
+        Calculators
       </h1>
       <p style={{
         color: "#b0b0b0",
         fontSize: "1.1rem",
-        marginBottom: "0.5rem",
-        textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)"
-      }}>
-        Autonomous Sky Tracking and Recon Apparatus
-      </p>
-      <p style={{
-        color: "#8a8a8a",
-        fontSize: "0.95rem",
-        marginBottom: "2rem",
-        fontStyle: "italic"
-      }}>
-        University of Arizona Senior Design Project
-      </p>
-
-      <div style={{
-        backdropFilter: "blur(10px)",
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        padding: "2rem",
-        borderRadius: "16px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
         marginBottom: "3rem",
-        maxWidth: 900
-      }}>
-        <h2 style={{
-          marginTop: 0,
-          marginBottom: "1rem",
-          fontSize: "1.5rem",
-          fontWeight: 600,
-          color: "#00d4ff",
-          textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
-        }}>
-          Project Overview
-        </h2>
-        <p style={{
-          color: "#d0d0d0",
-          lineHeight: "1.7",
-          marginBottom: "1rem",
-          fontSize: "1rem"
-        }}>
-          A.S.T.R.A. (Autonomous Sky Tracking and Recon Apparatus) is an advanced telescope system 
-          designed to autonomously track celestial objects and perform reconnaissance operations. This 
-          project represents a comprehensive solution for automated astronomical observation, combining 
-          precision optics, intelligent tracking algorithms, and real-time data acquisition.
-        </p>
-        <p style={{
-          color: "#d0d0d0",
-          lineHeight: "1.7",
-          marginBottom: 0,
-          fontSize: "1rem"
-        }}>
-          This web application provides optical calculation tools to support the design and operation 
-          of the A.S.T.R.A. system, enabling precise calculations for telescope parameters including 
-          Airy disk diameter, field of view, and other critical optical measurements.
-        </p>
-      </div>
-
-      <h2 style={{
-        marginTop: 0,
-        marginBottom: "1rem",
-        fontSize: "1.8rem",
-        fontWeight: 600,
-        color: "#e0e0e0",
         textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)"
       }}>
-        Optical Calculators
-      </h2>
-      <p style={{
-        color: "#b0b0b0",
-        fontSize: "1rem",
-        marginBottom: "2rem",
-        textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)"
-      }}>
-        Use the tools below to calculate optical parameters for your telescope setup.
+        Choose a calculator to get started.
       </p>
 
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-        gap: "1.5rem",
-        marginTop: "2rem"
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        gap: "2rem"
       }}>
         <Link href="/calculators/airy" style={{
           textDecoration: "none",
@@ -115,7 +44,7 @@ export default function Home() {
           <div style={{
             backdropFilter: "blur(10px)",
             backgroundColor: "rgba(255, 255, 255, 0.05)",
-            padding: "2rem",
+            padding: "2.5rem",
             borderRadius: "16px",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
@@ -146,10 +75,17 @@ export default function Home() {
             <p style={{
               color: "#b0b0b0",
               fontSize: "0.95rem",
-              margin: 0
+              marginBottom: "1rem"
             }}>
-              Calculate the Airy disk diameter from F/# and wavelength.
+              Calculate the Airy disk diameter in the focal plane from F/# and wavelength.
             </p>
+            <div style={{
+              color: "#00d4ff",
+              fontSize: "0.9rem",
+              fontWeight: 500
+            }}>
+              Calculate →
+            </div>
           </div>
         </Link>
 
@@ -160,7 +96,7 @@ export default function Home() {
           <div style={{
             backdropFilter: "blur(10px)",
             backgroundColor: "rgba(255, 255, 255, 0.05)",
-            padding: "2rem",
+            padding: "2.5rem",
             borderRadius: "16px",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
@@ -191,10 +127,17 @@ export default function Home() {
             <p style={{
               color: "#b0b0b0",
               fontSize: "0.95rem",
-              margin: 0
+              marginBottom: "1rem"
             }}>
-              Calculate FOV from sensor dimensions and focal length.
+              Calculate FOV from sensor dimensions, pixel counts, and focal length.
             </p>
+            <div style={{
+              color: "#ff00ff",
+              fontSize: "0.9rem",
+              fontWeight: 500
+            }}>
+              Calculate →
+            </div>
           </div>
         </Link>
       </div>
