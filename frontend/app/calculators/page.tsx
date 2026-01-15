@@ -33,6 +33,34 @@ export default function CalculatorsHub() {
       </p>
 
       <div style={{
+        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        padding: "2rem",
+        borderRadius: "16px",
+        border: "1px solid rgba(255, 255, 255, 0.1)",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+        maxWidth: 800,
+        margin: "0 auto 3rem"
+      }}>
+        <h2 style={{
+          marginTop: 0,
+          color: "#00d4ff",
+          fontSize: "1.5rem",
+          marginBottom: "1rem"
+        }}>
+          Available Calculators
+        </h2>
+        <ul style={{
+          color: "#d0d0d0",
+          lineHeight: "1.8",
+          paddingLeft: "1.5rem"
+        }}>
+          <li><strong style={{ color: "#00d4ff" }}>Airy Disk Calculator:</strong> Calculate the Airy disk diameter from F/# and wavelength.</li>
+          <li><strong style={{ color: "#ff00ff" }}>Field of View Calculator:</strong> Calculate FOV from sensor dimensions, pixel counts, and focal length.</li>
+        </ul>
+      </div>
+
+      <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: "2rem"
