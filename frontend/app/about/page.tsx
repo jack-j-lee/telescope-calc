@@ -143,7 +143,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 1 Name
+              Jack Lee - Team Lead
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -151,7 +151,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 1 description and role will go here.
+              Major: Optical Engineering <br />
+              Jack is ...
             </p>
           </div>
 
@@ -217,7 +218,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 2 Name
+              Jacob Missbrenner - Procurement Lead
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -225,7 +226,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 2 description and role will go here.
+              Major: Electrical Engineering <br />
+              Jacob is ...
             </p>
           </div>
 
@@ -291,7 +293,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 3 Name
+              Owen Litz
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -299,7 +301,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 3 description and role will go here.
+              Major: Optical Engineering <br />
+              Owen is ...
             </p>
           </div>
 
@@ -365,7 +368,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 4 Name
+              Sarah Aramburo
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -373,7 +376,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 4 description and role will go here.
+              Major: Mechanical Engineering <br />
+              Sarah is ...
             </p>
           </div>
 
@@ -439,7 +443,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 5 Name
+              Alexis Cervantes
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -447,7 +451,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 5 description and role will go here.
+              Major: Electrical Engineering <br />
+              Alexis is ...
             </p>
           </div>
 
@@ -513,7 +518,7 @@ export default function About() {
               marginBottom: "0.5rem",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
             }}>
-              Team Member 6 Name
+            Steven Paredeza
             </h3>
             <p style={{
               color: "#d0d0d0",
@@ -521,7 +526,8 @@ export default function About() {
               lineHeight: "1.6",
               margin: 0
             }}>
-              Team member 6 description and role will go here.
+              Major: Mechanical Engineering <br />
+              Steven is ...
             </p>
           </div>
         </div>
