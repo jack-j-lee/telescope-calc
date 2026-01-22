@@ -57,6 +57,7 @@ export default function CalculatorsHub() {
         }}>
           <li><strong style={{ color: "#00d4ff" }}>Airy Disk Calculator:</strong> Calculate the Airy disk diameter from F/# and wavelength.</li>
           <li><strong style={{ color: "#ff00ff" }}>Field of View Calculator:</strong> Calculate FOV from sensor dimensions, pixel counts, and focal length.</li>
+          <li><strong style={{ color: "#8a2be2" }}>Magnification Calculator:</strong> Calculate magnification from telescope and eyepiece focal lengths.</li>
         </ul>
       </div>
 
@@ -161,6 +162,58 @@ export default function CalculatorsHub() {
             </p>
             <div style={{
               color: "#ff00ff",
+              fontSize: "0.9rem",
+              fontWeight: 500
+            }}>
+              Calculate →
+            </div>
+          </div>
+        </Link>
+
+        <Link href="/calculators/magnification" style={{
+          textDecoration: "none",
+          display: "block"
+        }}>
+          <div style={{
+            backdropFilter: "blur(10px)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            padding: "2.5rem",
+            borderRadius: "16px",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+            transition: "all 0.3s ease",
+            cursor: "pointer"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-4px)";
+            e.currentTarget.style.boxShadow = "0 12px 40px rgba(138, 43, 226, 0.4)";
+            e.currentTarget.style.borderColor = "rgba(138, 43, 226, 0.5)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.3)";
+            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+          }}
+          >
+            <h2 style={{
+              marginTop: 0,
+              marginBottom: "0.5rem",
+              fontSize: "1.5rem",
+              fontWeight: 600,
+              color: "#8a2be2",
+              textShadow: "0 0 10px rgba(138, 43, 226, 0.5)"
+            }}>
+              Magnification Calculator
+            </h2>
+            <p style={{
+              color: "#b0b0b0",
+              fontSize: "0.95rem",
+              marginBottom: "1rem"
+            }}>
+              Calculate magnification from telescope and eyepiece focal lengths.
+            </p>
+            <div style={{
+              color: "#8a2be2",
               fontSize: "0.9rem",
               fontWeight: 500
             }}>

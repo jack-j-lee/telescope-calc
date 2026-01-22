@@ -4,11 +4,11 @@ import { useState } from "react";
 import { computeFOV } from "../../../lib/api";
 
 export default function FOVCalculator() {
-  const [sensorWidthMm, setSensorWidthMm] = useState("23.5");
-  const [sensorHeightMm, setSensorHeightMm] = useState("15.6");
-  const [pixelsWidth, setPixelsWidth] = useState("6000");
-  const [pixelsHeight, setPixelsHeight] = useState("4000");
-  const [focalLengthMm, setFocalLengthMm] = useState("2000");
+  const [sensorWidthMm, setSensorWidthMm] = useState("6.264");
+  const [sensorHeightMm, setSensorHeightMm] = useState("11.136");
+  const [pixelsWidth, setPixelsWidth] = useState("3840");
+  const [pixelsHeight, setPixelsHeight] = useState("2160");
+  const [focalLengthMm, setFocalLengthMm] = useState("2032");
   const [fovResult, setFovResult] = useState<any | null>(null);
   const [fovError, setFovError] = useState<string>("");
   const [fovFormula, setFovFormula] = useState<string>("");
@@ -158,7 +158,7 @@ export default function FOVCalculator() {
             fontSize: "0.95rem",
             fontWeight: 500
           }}>
-            Pixels Width
+            Number of Pixels (Width)
             <input
               value={pixelsWidth}
               onChange={(e) => setPixelsWidth(e.target.value)}
@@ -177,7 +177,7 @@ export default function FOVCalculator() {
             fontSize: "0.95rem",
             fontWeight: 500
           }}>
-            Pixels Height
+            Number of Pixels (Height)
             <input
               value={pixelsHeight}
               onChange={(e) => setPixelsHeight(e.target.value)}

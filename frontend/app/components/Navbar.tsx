@@ -39,7 +39,7 @@ export default function Navbar() {
           fontWeight: 600,
           textShadow: "0 0 10px rgba(0, 212, 255, 0.5)"
         }}>
-          Telescope Calc
+          ASTRA
         </Link>
         <Link 
           href="/" 
@@ -58,6 +58,22 @@ export default function Navbar() {
           Home
         </Link>
         <Link 
+          href="/users-guide" 
+          style={linkStyle(pathname === "/users-guide")}
+          onMouseEnter={(e) => {
+            if (pathname !== "/users-guide") {
+              e.currentTarget.style.color = "#00d4ff";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (pathname !== "/users-guide") {
+              e.currentTarget.style.color = "#d0d0d0";
+            }
+          }}
+        >
+          Users Guide
+        </Link>
+        <Link 
           href="/calculators" 
           style={linkStyle(pathname.startsWith("/calculators"))}
           onMouseEnter={(e) => {
@@ -74,6 +90,54 @@ export default function Navbar() {
           Calculators
         </Link>
         <Link 
+          href="/gallery" 
+          style={linkStyle(pathname === "/gallery")}
+          onMouseEnter={(e) => {
+            if (pathname !== "/gallery") {
+              e.currentTarget.style.color = "#00d4ff";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (pathname !== "/gallery") {
+              e.currentTarget.style.color = "#d0d0d0";
+            }
+          }}
+        >
+          Gallery
+        </Link>
+        <Link 
+          href="/faq" 
+          style={linkStyle(pathname === "/faq")}
+          onMouseEnter={(e) => {
+            if (pathname !== "/faq") {
+              e.currentTarget.style.color = "#00d4ff";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (pathname !== "/faq") {
+              e.currentTarget.style.color = "#d0d0d0";
+            }
+          }}
+        >
+          FAQ
+        </Link>
+        <Link 
+          href="/telescope-compatibility" 
+          style={linkStyle(pathname === "/telescope-compatibility")}
+          onMouseEnter={(e) => {
+            if (pathname !== "/telescope-compatibility") {
+              e.currentTarget.style.color = "#00d4ff";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (pathname !== "/telescope-compatibility") {
+              e.currentTarget.style.color = "#d0d0d0";
+            }
+          }}
+        >
+          Telescope Compatibility
+        </Link>
+        <Link 
           href="/about" 
           style={linkStyle(pathname === "/about")}
           onMouseEnter={(e) => {
@@ -87,7 +151,23 @@ export default function Navbar() {
             }
           }}
         >
-          About
+          About Us
+        </Link>
+        <Link 
+          href="/education" 
+          style={linkStyle(pathname === "/education")}
+          onMouseEnter={(e) => {
+            if (pathname !== "/education") {
+              e.currentTarget.style.color = "#00d4ff";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (pathname !== "/education") {
+              e.currentTarget.style.color = "#d0d0d0";
+            }
+          }}
+        >
+          Education
         </Link>
       </div>
     </nav>

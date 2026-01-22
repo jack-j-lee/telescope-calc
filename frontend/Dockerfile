@@ -1,11 +1,25 @@
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 
 WORKDIR /app
-COPY package.json tsconfig.json next.config.js ./
-COPY app ./app
-COPY lib ./lib
+COPY package.json package-lock.json* ./
+RUN npm ci
+COPY . .
+RUN mkdir -p public
 
-RUN npm install
+ARG NEXT_PUBLIC_API_BASE=
+ENV NEXT_PUBLIC_API_BASE=${NEXT_PUBLIC_API_BASE}
+
+RUN npm run build
+
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=3000
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+CMD ["node", "server.js"]
